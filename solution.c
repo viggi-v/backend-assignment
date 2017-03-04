@@ -5,7 +5,7 @@
  * mul returns the product of (count) consecutive numbers before (number)
  * eg mul(a,b) gives a*(a-1)*...*(a-b)
  */
-long long mul(long long number,long long count){
+long mul(long number,long count){
     if(count == 1)
         return number;
     return number*mul(number-1,count-1);
@@ -13,10 +13,10 @@ long long mul(long long number,long long count){
 /*
  * sum_comb returns the sequence (num)C(count)+(num-1)C(count)+...+(num-count+1)C(count)
  */
-long long sum_comb(long long num, long long count){
-    long long sum = 0;
-    long long multiplier = mul(num,count);
-    long long i=0;
+long sum_comb(long num, long count){
+    long sum = 0;
+    long multiplier = mul(num,count);
+    long i=0;
     for(i = 0; i< count; i++){
         sum+=multiplier;
         multiplier = multiplier*(num-count-i)/(num-i);
@@ -30,8 +30,8 @@ void main(){
      * n = number
      */
     int t = 1;
-    long long n,i;
-    long long answer;
+    long n,i;
+    long answer;
     scanf("%d",&t);
     while(t--){
         scanf("%d",&n);
@@ -45,6 +45,6 @@ void main(){
         for(i=1;i<=(n-1)/2;i++){
             answer-=sum_comb(n-1,i);
         }
-        printf("%d\n",answer%(long long)pow(10,9));
+        printf("%d\n",answer%(int)pow(10,9));
     }
 }
